@@ -20,5 +20,6 @@ Pour convertir les fichiers Markdown en PDF :
 
 *Tapez la commande*: 
 
-```bash
-./convert_markdown_to_pdf.sh```
+    bash:
+
+    ./convert_markdown_to_pdf.sh
