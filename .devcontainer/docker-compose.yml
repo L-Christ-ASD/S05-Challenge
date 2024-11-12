@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: your_username
+      POSTGRES_PASSWORD: your_password
+      POSTGRES_DB: your_database
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  vite:
+    image: your-vite-image
+    ports:
+      - "5173:5173"
+
+  directus:
+    image: directus/directus
+    ports:
+      - "8055:8055"
+
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+
+  docusaurus:
+    image: your-docusaurus-image
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres-data:
