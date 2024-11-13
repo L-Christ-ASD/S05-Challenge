@@ -1,57 +1,46 @@
-
-
 services:
-  serveur-web:
-    image: nginx
-    ports:
-      - 8080:80
-    volumes:
-      - ./front:/usr/share/nginx/html
-
-  back:
+  front:
     image: node:22-alpine
     ports:
-      - 3000:3000
+      - 5173:5173
     volumes:
-      - ./back:/app
+      - ./app-front:/app
     working_dir: /app
-    # je dois dire au conteneur d'installer les dépendances
-    # et de lancer le serveur
-    # command: sh -c "npm install && npm start"
-    command: sh -c "npm install && node index.js"
+    command: sh -c "npm i && npm run dev"
 
-
-
-  postgres:
-    image: postgres:latest
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: your_username
-      POSTGRES_PASSWORD: your_password
-      POSTGRES_DB: your_database
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-
-  vite:
-    image: your-vite-image
-    ports:
-      - "5173:5173"
-
-  directus:
+  back:
     image: directus/directus
     ports:
-      - "8055:8055"
+      - 8055:8055
+    # j'ajoute des variables d'environnement
+    # → https://docs.docker.com/compose/how-tos/environment-variables/set-environment-variables/#use-the-environment-attribute
+    environment:
+      # configure les accès à la BDD
+      DB_CLIENT: pg
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: mydb
+      DB_USER: user
+      DB_PASSWORD: password
+      # initialise l'admin
+      ADMIN_EMAIL: admin@oclock.io
+      ADMIN_PASSWORD: oclock
+    depends_on:
+      - db
+
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
 
   adminer:
     image: adminer
+    restart: always
     ports:
-      - "8080:8080"
-
-  docusaurus:
-    image: your-docusaurus-image
-    ports:
-      - "3000:3000"
-
-volumes:
-  postgres-data:
+      - 8080:8080
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+    depends_on:
+      - db

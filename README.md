@@ -12,3 +12,12 @@ https://vite.dev/guide/#scaffolding-your-first-vite-project
 docs.directus.io
 Docker Guide | Directus Docs
 How to host Directus on Docker. (5 ko)
+
+
+
+
+..............................................................................
+npm create vite@latest app-front -- --template react-ts -> pour creer le:
+  cd app-front
+  npm install
+  npm run dev
