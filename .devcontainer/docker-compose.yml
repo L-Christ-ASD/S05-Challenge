@@ -1,6 +1,27 @@
-version: '3.8'
+
 
 services:
+  serveur-web:
+    image: nginx
+    ports:
+      - 8080:80
+    volumes:
+      - ./front:/usr/share/nginx/html
+
+  back:
+    image: node:22-alpine
+    ports:
+      - 3000:3000
+    volumes:
+      - ./back:/app
+    working_dir: /app
+    # je dois dire au conteneur d'installer les dépendances
+    # et de lancer le serveur
+    # command: sh -c "npm install && npm start"
+    command: sh -c "npm install && node index.js"
+
+
+
   postgres:
     image: postgres:latest
     ports:
