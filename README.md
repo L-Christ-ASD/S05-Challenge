@@ -1,40 +1,14 @@
-# Environnement de travail
+Exercice
+Créer une application avec :
+un front en Vite + React + TS sur le port 5173 : Doc Vite https://vite.dev/guide/#scaffolding-your-first-vite-project
+un back en Directus sur le port 8055 avec un email admin admin@oclock.io et un mot de passe oclock : Doc Directus
+       Vous allez devoir utiliser des variables d’environnement pour configurer Directus
+Retour 13h35
+vitejs
+Getting Started
+Next Generation Frontend Tooling (248 ko)
+https://vite.dev/guide/#scaffolding-your-first-vite-project
 
-## Environnement de developpement sur mésure:
-
-Le fichier `.devcontainer.json` configure un environnement de développement conteneurisé basé sur Debian avec Docker-in-Docker et Node.js. 
-Il expose certains ports pour l'accès depuis votre machine hôte, exécute Docker Compose après la création du conteneur, 
-et installe diverses *extensions* pour **VS Code** afin de faciliter suivant le CDC, le développement avec: 
-* Docker 
-* Postgres 
-* Vite 
-* Directus
-* Adminer
-* et Docusaurus.
-
-## Mise à disposition de la converssion des  .md vers le format pdf
-
-Le fichier `convert_markdown_to_pdf.sh` parcourt tous les fichiers **Markdown** dans un répertoire donné,
-(tout le contenneur, dans notre cas!) et utilise le conteneur `yjpictures/mdpdfinator` pour les convertir en **PDF**, 
-et le stocker dans le dossier **pdf_files**.
-
-Pour convertir les fichiers Markdown en PDF :
-
-*Tapez la commande*: 
-
-    bash:
-
-    ./convert_markdown_to_pdf.sh
-
-## Installation
-
-* Docker
-* VS Code
-  - Extension [Devcontainers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-
-## Utilisation
-
-- Ouvre le projet dans VS code
-- <Ré-ouvrir dans le conteneur>
-- Ouvrir un terminal
-- Utiliser docker
+docs.directus.io
+Docker Guide | Directus Docs
+How to host Directus on Docker. (5 ko)
